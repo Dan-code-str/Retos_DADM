@@ -1,5 +1,12 @@
-package co.edu.unal.reto_0; // Recuerda mantener tu paquete correcto
+package co.edu.unal.reto_0;
 
+import android.view.LayoutInflater;
+import android.content.Context;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.view.MenuInflater;
+import android.widget.Toast;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,13 +23,17 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
     private TextView mInfoTextView;
     private boolean mGameOver;
 
-    // NUEVO: Variables para los puntajes y el turno inicial
+
     private int mHumanWins = 0;
     private int mComputerWins = 0;
     private int mTies = 0;
     private boolean mHumanFirst = true;
 
-    // NUEVO: Variables para los nuevos TextViews
+    static final int DIALOG_DIFFICULTY_ID = 0;
+    static final int DIALOG_QUIT_ID = 1;
+    static final int DIALOG_ABOUT_ID = 2;
+
+    //Variables para los nuevos TextViews
     private TextView mHumanScoreTextView;
     private TextView mTieScoreTextView;
     private TextView mAndroidScoreTextView;
@@ -45,7 +56,7 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
 
         mInfoTextView = (TextView) findViewById(R.id.information);
 
-        // NUEVO: Enlazar los textos de puntaje con la vista
+        //Enlazar los textos de puntaje con la vista
         mHumanScoreTextView = (TextView) findViewById(R.id.human_score);
         mTieScoreTextView = (TextView) findViewById(R.id.tie_score);
         mAndroidScoreTextView = (TextView) findViewById(R.id.android_score);
@@ -65,7 +76,7 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
             mBoardButtons[i].setOnClickListener(new ButtonClickListener(i));
         }
 
-        // NUEVO: Lógica para alternar quién empieza
+        //alternar quién empieza
         if (mHumanFirst) {
             mInfoTextView.setText(R.string.first_human);
             mHumanFirst = false; // La próxima partida empezará Android
@@ -101,19 +112,19 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
                     mInfoTextView.setText(R.string.turn_human);
                 } else if (winner == 1) {
                     mInfoTextView.setText(R.string.result_tie);
-                    // NUEVO: Sumar empate y actualizar texto
+                    // Sumar empate y actualizar texto
                     mTies++;
                     mTieScoreTextView.setText("Ties: " + mTies);
                     mGameOver = true;
                 } else if (winner == 2) {
                     mInfoTextView.setText(R.string.result_human_wins);
-                    // NUEVO: Sumar victoria humana y actualizar texto
+                    // Sumar victoria humana y actualizar texto
                     mHumanWins++;
                     mHumanScoreTextView.setText("Human: " + mHumanWins);
                     mGameOver = true;
                 } else {
                     mInfoTextView.setText(R.string.result_computer_wins);
-                    // NUEVO: Sumar victoria Android y actualizar texto
+                    // Sumar victoria Android y actualizar texto
                     mComputerWins++;
                     mAndroidScoreTextView.setText("Android: " + mComputerWins);
                     mGameOver = true;
@@ -135,13 +146,88 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add("New Game");
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.options_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        startNewGame();
-        return true;
+        int id = item.getItemId();
+
+        if (id == R.id.new_game) {
+            startNewGame();
+            return true;
+        } else if (id == R.id.ai_difficulty) {
+            showDialog(DIALOG_DIFFICULTY_ID);
+            return true;
+        } else if (id == R.id.quit) {
+            showDialog(DIALOG_QUIT_ID);
+            return true;
+        } else if (id == R.id.about) {
+            showDialog(DIALOG_ABOUT_ID);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+        Dialog dialog = null;
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        switch(id) {
+            case DIALOG_DIFFICULTY_ID:
+                builder.setTitle(R.string.difficulty_choose);
+                final CharSequence[] levels = {
+                        getResources().getString(R.string.difficulty_easy),
+                        getResources().getString(R.string.difficulty_harder),
+                        getResources().getString(R.string.difficulty_expert)};
+
+                // TODO resuelto: Determinar qué nivel está seleccionado actualmente
+                int selected = 2; // Por defecto Experto
+                if (mGame.getDifficultyLevel() == TicTacToeGame.DifficultyLevel.Easy) selected = 0;
+                else if (mGame.getDifficultyLevel() == TicTacToeGame.DifficultyLevel.Harder) selected = 1;
+
+                builder.setSingleChoiceItems(levels, selected,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int item) {
+                                dialog.dismiss(); // Close dialog
+
+                                // TODO resuelto: Cambiar la dificultad del juego según la selección
+                                if (item == 0) mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Easy);
+                                else if (item == 1) mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Harder);
+                                else mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Expert);
+
+                                // Display the selected difficulty level
+                                Toast.makeText(getApplicationContext(), levels[item], Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dialog = builder.create();
+                break;
+
+            case DIALOG_QUIT_ID:
+                // Create the quit confirmation dialog
+                builder.setMessage(R.string.quit_question)
+                        .setCancelable(false)
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                AndroidTicTacToeActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton(R.string.no, null);
+                dialog = builder.create();
+                break;
+
+            case DIALOG_ABOUT_ID:
+                Context context = getApplicationContext();
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+                View layout = inflater.inflate(R.layout.about_dialog, null);
+                builder.setView(layout);
+                builder.setPositiveButton("OK", null);
+                dialog = builder.create();
+                break;
+        }
+        return dialog;
     }
 }

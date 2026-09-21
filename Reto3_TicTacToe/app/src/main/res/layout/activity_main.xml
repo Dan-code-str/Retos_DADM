@@ -11,7 +11,6 @@
         android:layout_width="fill_parent"
         android:layout_marginTop="5dp" >
 
-        <!-- Fila 1 -->
         <TableRow android:gravity="center_horizontal">
             <Button android:id="@+id/one"
                 android:layout_width="100dp"
@@ -27,7 +26,6 @@
                 android:textSize="70dp" />
         </TableRow>
 
-        <!-- Fila 2 -->
         <TableRow android:gravity="center_horizontal">
             <Button android:id="@+id/four"
                 android:layout_width="100dp"
@@ -69,7 +67,6 @@
         android:layout_marginTop="20dp"
         android:textSize="20dp" />
 
-    <!-- Este es el nuevo RelativeLayout para los puntajes -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
