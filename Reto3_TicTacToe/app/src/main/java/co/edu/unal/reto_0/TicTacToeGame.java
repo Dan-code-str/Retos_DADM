@@ -38,10 +38,12 @@ public class TicTacToeGame {
         }
     }
 
-    public void setMove(char player, int location) {
+    public boolean setMove(char player, int location) {
         if (mBoard[location] == OPEN_SPOT) {
             mBoard[location] = player;
+            return true;
         }
+        return false;
     }
 
     // NUEVO: Método refactorizado para elegir el movimiento según la dificultad[cite: 10]
@@ -135,5 +137,9 @@ public class TicTacToeGame {
         }
 
         return 1;
+    }
+
+    public char getBoardOccupant(int i) {
+        return mBoard[i];
     }
 }

@@ -1,147 +1,171 @@
 package co.edu.unal.reto_0;
 
-import android.view.LayoutInflater;
-import android.content.Context;
+import android.os.Handler;
+import android.media.MediaPlayer;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.view.MenuInflater;
-import android.widget.Toast;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent; // Importación necesaria para los toques
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
+import android.view.LayoutInflater;
 
 public class AndroidTicTacToeActivity extends AppCompatActivity {
 
     private TicTacToeGame mGame;
-    private Button mBoardButtons[];
+    private BoardView mBoardView; // NUEVO: Variable para el tablero visual
+    private MediaPlayer mHumanMediaPlayer;
+    private MediaPlayer mComputerMediaPlayer;
     private TextView mInfoTextView;
     private boolean mGameOver;
-
 
     private int mHumanWins = 0;
     private int mComputerWins = 0;
     private int mTies = 0;
     private boolean mHumanFirst = true;
+    private char mTurn = TicTacToeGame.HUMAN_PLAYER;
+
+    private TextView mHumanScoreTextView;
+    private TextView mTieScoreTextView;
+    private TextView mAndroidScoreTextView;
 
     static final int DIALOG_DIFFICULTY_ID = 0;
     static final int DIALOG_QUIT_ID = 1;
     static final int DIALOG_ABOUT_ID = 2;
-
-    //Variables para los nuevos TextViews
-    private TextView mHumanScoreTextView;
-    private TextView mTieScoreTextView;
-    private TextView mAndroidScoreTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mBoardButtons = new Button[TicTacToeGame.BOARD_SIZE];
-        mBoardButtons[0] = (Button) findViewById(R.id.one);
-        mBoardButtons[1] = (Button) findViewById(R.id.two);
-        mBoardButtons[2] = (Button) findViewById(R.id.three);
-        mBoardButtons[3] = (Button) findViewById(R.id.four);
-        mBoardButtons[4] = (Button) findViewById(R.id.five);
-        mBoardButtons[5] = (Button) findViewById(R.id.six);
-        mBoardButtons[6] = (Button) findViewById(R.id.seven);
-        mBoardButtons[7] = (Button) findViewById(R.id.eight);
-        mBoardButtons[8] = (Button) findViewById(R.id.nine);
-
         mInfoTextView = (TextView) findViewById(R.id.information);
-
-        //Enlazar los textos de puntaje con la vista
         mHumanScoreTextView = (TextView) findViewById(R.id.human_score);
         mTieScoreTextView = (TextView) findViewById(R.id.tie_score);
         mAndroidScoreTextView = (TextView) findViewById(R.id.android_score);
 
         mGame = new TicTacToeGame();
 
+        // NUEVO: Instanciar el tablero visual y asignar el juego[cite: 7]
+        mBoardView = (BoardView) findViewById(R.id.board);
+        mBoardView.setGame(mGame);
+
+        // NUEVO: Escuchar los toques en la pantalla[cite: 7]
+        mBoardView.setOnTouchListener(mTouchListener);
+
         startNewGame();
+    }
+
+    private void checkWinner(int winner) {
+        if (winner == 1) {
+            mInfoTextView.setText(R.string.result_tie);
+            mTies++;
+            mTieScoreTextView.setText("Ties: " + mTies);
+            mGameOver = true;
+        } else if (winner == 2) {
+            mInfoTextView.setText(R.string.result_human_wins);
+            mHumanWins++;
+            mHumanScoreTextView.setText("Human: " + mHumanWins);
+            mGameOver = true;
+        } else if (winner == 3) {
+            mInfoTextView.setText(R.string.result_computer_wins);
+            mComputerWins++;
+            mAndroidScoreTextView.setText("Android: " + mComputerWins);
+            mGameOver = true;
+        }
     }
 
     private void startNewGame() {
         mGame.clearBoard();
         mGameOver = false;
+        mBoardView.invalidate();
 
-        for (int i = 0; i < mBoardButtons.length; i++) {
-            mBoardButtons[i].setText("");
-            mBoardButtons[i].setEnabled(true);
-            mBoardButtons[i].setOnClickListener(new ButtonClickListener(i));
-        }
-
-        //alternar quién empieza
         if (mHumanFirst) {
             mInfoTextView.setText(R.string.first_human);
-            mHumanFirst = false; // La próxima partida empezará Android
+            mTurn = TicTacToeGame.HUMAN_PLAYER;
+            mHumanFirst = false;
         } else {
             mInfoTextView.setText(R.string.turn_computer);
-            int move = mGame.getComputerMove();
-            setMove(TicTacToeGame.COMPUTER_PLAYER, move);
-            mInfoTextView.setText(R.string.turn_human);
-            mHumanFirst = true; // La próxima partida empezarás tú
+            mTurn = TicTacToeGame.COMPUTER_PLAYER; // Bloquea toques humanos
+
+            // Retraso de 1 segundo para el primer movimiento si empieza Android
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    int move = mGame.getComputerMove();
+                    setMove(TicTacToeGame.COMPUTER_PLAYER, move);
+                    mInfoTextView.setText(R.string.turn_human);
+                    mTurn = TicTacToeGame.HUMAN_PLAYER;
+                }
+            }, 1000);
+
+            mHumanFirst = true;
         }
     }
 
-    private class ButtonClickListener implements View.OnClickListener {
-        int location;
+    private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
+        public boolean onTouch(View v, MotionEvent event) {
+            int col = (int) event.getX() / mBoardView.getBoardCellWidth();
+            int row = (int) event.getY() / mBoardView.getBoardCellHeight();
+            int pos = row * 3 + col;
 
-        public ButtonClickListener(int location) {
-            this.location = location;
-        }
-
-        public void onClick(View view) {
-            if (mBoardButtons[location].isEnabled() && !mGameOver) {
-                setMove(TicTacToeGame.HUMAN_PLAYER, location);
+            // NUEVO: Solo permite colocar ficha si es turno humano[cite: 7]
+            if (!mGameOver && mTurn == TicTacToeGame.HUMAN_PLAYER && setMove(TicTacToeGame.HUMAN_PLAYER, pos)) {
 
                 int winner = mGame.checkForWinner();
                 if (winner == 0) {
                     mInfoTextView.setText(R.string.turn_computer);
-                    int move = mGame.getComputerMove();
-                    setMove(TicTacToeGame.COMPUTER_PLAYER, move);
-                    winner = mGame.checkForWinner();
-                }
+                    mTurn = TicTacToeGame.COMPUTER_PLAYER; // Bloquea la pantalla[cite: 7]
 
-                if (winner == 0) {
-                    mInfoTextView.setText(R.string.turn_human);
-                } else if (winner == 1) {
-                    mInfoTextView.setText(R.string.result_tie);
-                    // Sumar empate y actualizar texto
-                    mTies++;
-                    mTieScoreTextView.setText("Ties: " + mTies);
-                    mGameOver = true;
-                } else if (winner == 2) {
-                    mInfoTextView.setText(R.string.result_human_wins);
-                    // Sumar victoria humana y actualizar texto
-                    mHumanWins++;
-                    mHumanScoreTextView.setText("Human: " + mHumanWins);
-                    mGameOver = true;
+                    // NUEVO: El Handler crea un retraso de 1 segundo antes de ejecutar el Runnable[cite: 7]
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            int move = mGame.getComputerMove();
+                            setMove(TicTacToeGame.COMPUTER_PLAYER, move);
+
+                            int winnerAfterComputer = mGame.checkForWinner();
+                            if (winnerAfterComputer == 0) {
+                                mInfoTextView.setText(R.string.turn_human);
+                                mTurn = TicTacToeGame.HUMAN_PLAYER; // Devuelve el turno[cite: 7]
+                            } else {
+                                checkWinner(winnerAfterComputer);
+                            }
+                        }
+                    }, 1000); // 1000 ms = 1 segundo de retraso[cite: 7]
+
                 } else {
-                    mInfoTextView.setText(R.string.result_computer_wins);
-                    // Sumar victoria Android y actualizar texto
-                    mComputerWins++;
-                    mAndroidScoreTextView.setText("Android: " + mComputerWins);
-                    mGameOver = true;
+                    checkWinner(winner);
                 }
             }
+            return false;
         }
+    };
+
+    // NUEVO: Devuelve boolean e invalida el tablero para forzar el redibujado[cite: 7]
+    private boolean setMove(char player, int location) {
+        if (mGame.setMove(player, location)) {
+            mBoardView.invalidate(); // Redibuja el tablero
+
+            // NUEVO: Reproducir el sonido
+            if (player == TicTacToeGame.HUMAN_PLAYER) {
+                mHumanMediaPlayer.start();
+            } else {
+                mComputerMediaPlayer.start();
+            }
+
+            return true;
+        }
+        return false;
     }
 
-    private void setMove(char player, int location) {
-        mGame.setMove(player, location);
-        mBoardButtons[location].setEnabled(false);
-        mBoardButtons[location].setText(String.valueOf(player));
-        if (player == TicTacToeGame.HUMAN_PLAYER)
-            mBoardButtons[location].setTextColor(Color.rgb(0, 200, 0));
-        else
-            mBoardButtons[location].setTextColor(Color.rgb(200, 0, 0));
-    }
+    // A partir de aquí, mantén tus métodos onCreateOptionsMenu, onOptionsItemSelected y onCreateDialog exactamente igual que antes...
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -229,5 +253,19 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
                 break;
         }
         return dialog;
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Cambia "sword" y "swish" por los nombres exactos de tus audios sin el .mp3
+        mHumanMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.fire);
+        mComputerMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.water);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mHumanMediaPlayer.release();
+        mComputerMediaPlayer.release();
     }
 }

@@ -1,72 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center" >
+    android:gravity="center"
+    android:padding="16dp">
 
-    <TableLayout
-        android:id="@+id/play_grid"
+    <!-- Tablero visual personalizado (Reemplaza a los 9 botones viejos) -->
+    <co.edu.unal.reto_0.BoardView
+        android:id="@+id/board"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="5dp"/>
+
+    <!-- Texto de información sobre el turno o ganador -->
+    <TextView
+        android:id="@+id/information"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_marginTop="5dp" >
-
-        <TableRow android:gravity="center_horizontal">
-            <Button android:id="@+id/one"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/two"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/three"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-        </TableRow>
-
-        <TableRow android:gravity="center_horizontal">
-            <Button android:id="@+id/four"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/five"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/six"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-        </TableRow>
-
-        <!-- Fila 3 -->
-        <TableRow android:gravity="center_horizontal">
-            <Button android:id="@+id/seven"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/eight"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-            <Button android:id="@+id/nine"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:textSize="70dp" />
-        </TableRow>
-
-    </TableLayout>
-
-    <TextView android:id="@+id/information"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="info"
-        android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:textSize="20dp" />
+        android:text="Your turn."
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
+    <!-- Sección de puntajes -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:text="Human: 0"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -88,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Ties: 0"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -97,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Android: 0"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
     </RelativeLayout>
