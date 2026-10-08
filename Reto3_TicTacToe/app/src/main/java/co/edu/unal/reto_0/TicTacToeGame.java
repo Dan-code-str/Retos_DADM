@@ -142,4 +142,14 @@ public class TicTacToeGame {
     public char getBoardOccupant(int i) {
         return mBoard[i];
     }
+
+    // Método para obtener el estado del tablero
+    public char[] getBoardState() {
+        return mBoard;
+    }
+
+    // Método para restaurar el estado del tablero (usando clone)
+    public void setBoardState(char[] board) {
+        mBoard = board.clone();
+    }
 }

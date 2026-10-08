@@ -16,6 +16,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.content.SharedPreferences; // Asegúrate de agregar la importación
+
 
 public class AndroidTicTacToeActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
     private MediaPlayer mComputerMediaPlayer;
     private TextView mInfoTextView;
     private boolean mGameOver;
+    private SharedPreferences mPrefs;
 
     private int mHumanWins = 0;
     private int mComputerWins = 0;
@@ -43,6 +46,7 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
         mInfoTextView = (TextView) findViewById(R.id.information);
@@ -51,6 +55,19 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         mAndroidScoreTextView = (TextView) findViewById(R.id.android_score);
 
         mGame = new TicTacToeGame();
+        // Restaurar las preferencias (Puntajes y Dificultad)
+        mPrefs = getSharedPreferences("ttt_prefs", MODE_PRIVATE);
+        mHumanWins = mPrefs.getInt("mHumanWins", 0);
+        mComputerWins = mPrefs.getInt("mComputerWins", 0);
+        mTies = mPrefs.getInt("mTies", 0);
+
+        // Reto extra: Restaurar la dificultad (usando números enteros: 0=Fácil, 1=Difícil, 2=Experto)
+        int difficulty = mPrefs.getInt("mDifficulty", 2);
+        if (difficulty == 0) mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Easy);
+        else if (difficulty == 1) mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Harder);
+        else mGame.setDifficultyLevel(TicTacToeGame.DifficultyLevel.Expert);
+
+        displayScores();
 
         // NUEVO: Instanciar el tablero visual y asignar el juego[cite: 7]
         mBoardView = (BoardView) findViewById(R.id.board);
@@ -98,10 +115,14 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-                    int move = mGame.getComputerMove();
-                    setMove(TicTacToeGame.COMPUTER_PLAYER, move);
-                    mInfoTextView.setText(R.string.turn_human);
-                    mTurn = TicTacToeGame.HUMAN_PLAYER;
+                    try { // <-- PROTECCIÓN AQUÍ
+                        int move = mGame.getComputerMove();
+                        setMove(TicTacToeGame.COMPUTER_PLAYER, move);
+                        mInfoTextView.setText(R.string.turn_human);
+                        mTurn = TicTacToeGame.HUMAN_PLAYER;
+                    } catch (Exception e) {
+                        // Ignorar si la pantalla rotó
+                    }
                 }
             }, 1000);
 
@@ -127,15 +148,19 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         public void run() {
-                            int move = mGame.getComputerMove();
-                            setMove(TicTacToeGame.COMPUTER_PLAYER, move);
+                            try { // NUEVO: Bloque try para atrapar el error si la pantalla ya no existe
+                                int move = mGame.getComputerMove();
+                                setMove(TicTacToeGame.COMPUTER_PLAYER, move);
 
-                            int winnerAfterComputer = mGame.checkForWinner();
-                            if (winnerAfterComputer == 0) {
-                                mInfoTextView.setText(R.string.turn_human);
-                                mTurn = TicTacToeGame.HUMAN_PLAYER; // Devuelve el turno[cite: 7]
-                            } else {
-                                checkWinner(winnerAfterComputer);
+                                int winnerAfterComputer = mGame.checkForWinner();
+                                if (winnerAfterComputer == 0) {
+                                    mInfoTextView.setText(R.string.turn_human);
+                                    mTurn = TicTacToeGame.HUMAN_PLAYER;
+                                } else {
+                                    checkWinner(winnerAfterComputer);
+                                }
+                            } catch (Exception e) {
+                                // Se ignora el error porque la Activity vieja ya murió
                             }
                         }
                     }, 1000); // 1000 ms = 1 segundo de retraso[cite: 7]
@@ -153,11 +178,15 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         if (mGame.setMove(player, location)) {
             mBoardView.invalidate(); // Redibuja el tablero
 
-            // NUEVO: Reproducir el sonido
-            if (player == TicTacToeGame.HUMAN_PLAYER) {
-                mHumanMediaPlayer.start();
-            } else {
-                mComputerMediaPlayer.start();
+            // Protección: Solo reproducir si los MediaPlayers no son nulos y atrapar errores
+            try {
+                if (player == TicTacToeGame.HUMAN_PLAYER && mHumanMediaPlayer != null) {
+                    mHumanMediaPlayer.start();
+                } else if (player == TicTacToeGame.COMPUTER_PLAYER && mComputerMediaPlayer != null) {
+                    mComputerMediaPlayer.start();
+                }
+            } catch (Exception e) {
+                // Si el audio falla al rotar, simplemente se ignora y el juego continúa
             }
 
             return true;
@@ -165,7 +194,6 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         return false;
     }
 
-    // A partir de aquí, mantén tus métodos onCreateOptionsMenu, onOptionsItemSelected y onCreateDialog exactamente igual que antes...
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -185,8 +213,11 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         } else if (id == R.id.ai_difficulty) {
             showDialog(DIALOG_DIFFICULTY_ID);
             return true;
-        } else if (id == R.id.quit) {
-            showDialog(DIALOG_QUIT_ID);
+        } else if (id == R.id.reset_scores) {
+            mHumanWins = 0;
+            mComputerWins = 0;
+            mTies = 0;
+            displayScores();
             return true;
         } else if (id == R.id.about) {
             showDialog(DIALOG_ABOUT_ID);
@@ -267,5 +298,73 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         super.onPause();
         mHumanMediaPlayer.release();
         mComputerMediaPlayer.release();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharArray("board", mGame.getBoardState());
+        outState.putBoolean("mGameOver", mGameOver);
+        outState.putInt("mHumanWins", Integer.valueOf(mHumanWins));
+        outState.putInt("mComputerWins", Integer.valueOf(mComputerWins));
+        outState.putInt("mTies", Integer.valueOf(mTies));
+        outState.putCharSequence("info", mInfoTextView.getText());
+        outState.putChar("mTurn", mTurn); // Guardamos de quién es el turno
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mGame.setBoardState(savedInstanceState.getCharArray("board"));
+        mGameOver = savedInstanceState.getBoolean("mGameOver");
+        mInfoTextView.setText(savedInstanceState.getCharSequence("info"));
+        mHumanWins = savedInstanceState.getInt("mHumanWins");
+        mComputerWins = savedInstanceState.getInt("mComputerWins");
+        mTies = savedInstanceState.getInt("mTies");
+        mTurn = savedInstanceState.getChar("mTurn"); // Restauramos el turno
+
+        displayScores();
+
+        displayScores();
+
+        // NUEVO: Si al rotar la pantalla era el turno de la computadora, debe tirar inmediatamente
+        if (mTurn == TicTacToeGame.COMPUTER_PLAYER) {
+            int move = mGame.getComputerMove();
+            setMove(TicTacToeGame.COMPUTER_PLAYER, move);
+
+            int winner = mGame.checkForWinner();
+            if (winner == 0) {
+                mInfoTextView.setText(R.string.turn_human);
+                mTurn = TicTacToeGame.HUMAN_PLAYER;
+            } else {
+                checkWinner(winner);
+            }
+        }
+    }
+
+    // Método auxiliar para actualizar los textos de los puntajes[cite: 20]
+    private void displayScores() {
+        mHumanScoreTextView.setText("Human: " + mHumanWins);
+        mAndroidScoreTextView.setText("Android: " + mComputerWins);
+        mTieScoreTextView.setText("Ties: " + mTies);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        // Guardar los puntajes y la dificultad actuales
+        SharedPreferences.Editor ed = mPrefs.edit();
+        ed.putInt("mHumanWins", mHumanWins);
+        ed.putInt("mComputerWins", mComputerWins);
+        ed.putInt("mTies", mTies);
+
+        // Reto extra: Guardar la dificultad convirtiendo el Enum a un entero
+        int diff = 2; // Por defecto experto
+        if (mGame.getDifficultyLevel() == TicTacToeGame.DifficultyLevel.Easy) diff = 0;
+        else if (mGame.getDifficultyLevel() == TicTacToeGame.DifficultyLevel.Harder) diff = 1;
+        ed.putInt("mDifficulty", diff);
+
+        ed.commit(); // Guarda físicamente los datos en el teléfono
     }
 }
