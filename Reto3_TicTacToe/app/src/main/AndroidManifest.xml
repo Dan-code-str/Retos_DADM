@@ -11,13 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reto_0">
-        <activity
-            android:name=".AndroidTicTacToeActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+        <!-- Pantalla del juego (ya no es la principal) -->
+        <activity android:name=".AndroidTicTacToeActivity"
+            android:exported="false" /> <!-- Puede tener otras configuraciones de rotación -->
+
+        <!-- Nueva pantalla de Lobby (ahora es la principal) -->
+        <activity android:name=".LobbyActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

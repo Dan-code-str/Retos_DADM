@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "806469682627",
+    "project_id": "triquionline-d7b8f",
+    "storage_bucket": "triquionline-d7b8f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806469682627:android:a2466b21771223fae06976",
+        "android_client_info": {
+          "package_name": "co.edu.unal.reto_0"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAyMDE0SR49Vg1Etg4e8J3PwtCJsmXoNQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
