@@ -1,0 +1,102 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema único oscuro: la app se ve igual con el teléfono en modo claro u oscuro. -->
+    <style name="Base.Theme.Reto10" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/aguamarina</item>
+        <item name="colorOnPrimary">@color/sobre_aguamarina</item>
+        <item name="colorPrimaryContainer">@color/aguamarina_oscuro</item>
+        <item name="colorOnPrimaryContainer">@color/aguamarina_claro</item>
+        <item name="colorSecondary">@color/lima</item>
+        <item name="colorOnSecondary">@color/sobre_lima</item>
+        <item name="colorSecondaryContainer">@color/lima_oscuro</item>
+        <item name="colorOnSecondaryContainer">@color/lima_claro</item>
+        <item name="colorTertiary">@color/cian</item>
+
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="colorOnBackground">@color/texto</item>
+        <item name="colorSurface">@color/fondo</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorSurfaceVariant">@color/superficie_variante</item>
+        <item name="colorOnSurfaceVariant">@color/texto_suave</item>
+        <item name="colorSurfaceContainerLowest">@color/fondo</item>
+        <item name="colorSurfaceContainerLow">@color/superficie_baja</item>
+        <item name="colorSurfaceContainer">@color/superficie</item>
+        <item name="colorSurfaceContainerHigh">@color/superficie_alta</item>
+        <item name="colorSurfaceContainerHighest">@color/superficie_mas_alta</item>
+        <item name="colorOutline">@color/contorno</item>
+        <item name="colorOutlineVariant">@color/contorno_suave</item>
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">false</item>
+
+        <!-- Tipografía: Space Grotesk en títulos, números y botones -->
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Reto10.DisplaySmall</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Reto10.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Reto10.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Reto10.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Reto10.TitleMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Reto10.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Reto10.LabelMedium</item>
+
+        <item name="materialButtonStyle">@style/Widget.Reto10.Button</item>
+        <item name="materialCardViewFilledStyle">@style/Widget.Reto10.Card</item>
+    </style>
+
+    <style name="Theme.Reto10" parent="Base.Theme.Reto10" />
+
+    <!-- Textos -->
+    <style name="TextAppearance.Reto10.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Reto10.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:fontFamily">@font/space_grotesk_familia</item>
+        <item name="android:letterSpacing">0.08</item>
+    </style>
+
+    <!-- Botón principal con resplandor aguamarina (sombra de color en Android 9+, ver values-v28) -->
+    <style name="Widget.Reto10.Button" parent="Widget.Material3.Button">
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">8dp</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <!-- Tarjetas con borde aguamarina tenue -->
+    <style name="Widget.Reto10.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="strokeColor">@color/contorno_suave</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardCornerRadius">18dp</item>
+    </style>
+</resources>

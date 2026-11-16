@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fondo del ícono: casi negro verdoso con un resplandor aguamarina detrás de la señal. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#071012"
+        android:pathData="M0,0h108v108h-108z" />
+    <path android:pathData="M0,0h108v108h-108z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="54"
+                android:centerY="58"
+                android:gradientRadius="46"
+                android:type="radial">
+                <item
+                    android:color="#5A2EE6C5"
+                    android:offset="0" />
+                <item
+                    android:color="#1A2EE6C5"
+                    android:offset="0.55" />
+                <item
+                    android:color="#002EE6C5"
+                    android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+</vector>

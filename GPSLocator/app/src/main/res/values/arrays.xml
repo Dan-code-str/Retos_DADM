@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Deben coincidir con los id de PoiCategories.all -->
+    <string-array name="poi_category_values">
+        <item>hospital</item>
+        <item>pharmacy</item>
+        <item>tourism</item>
+        <item>park</item>
+        <item>restaurant</item>
+        <item>education</item>
+        <item>police</item>
+        <item>hotel</item>
+        <item>bank</item>
+    </string-array>
+
+    <string-array name="poi_category_labels">
+        <item>@string/cat_hospital</item>
+        <item>@string/cat_pharmacy</item>
+        <item>@string/cat_tourism</item>
+        <item>@string/cat_park</item>
+        <item>@string/cat_restaurant</item>
+        <item>@string/cat_education</item>
+        <item>@string/cat_police</item>
+        <item>@string/cat_hotel</item>
+        <item>@string/cat_bank</item>
+    </string-array>
+
+    <string-array name="poi_category_defaults">
+        <item>hospital</item>
+        <item>tourism</item>
+        <item>park</item>
+        <item>police</item>
+    </string-array>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta: aguamarina (primario) y verde lima (acento) sobre fondo casi negro verdoso -->
+    <color name="aguamarina">#FF2EE6C5</color>
+    <color name="aguamarina_oscuro">#FF0F4D43</color>
+    <color name="aguamarina_claro">#FFB6FFEF</color>
+    <color name="lima">#FFB8F34A</color>
+    <color name="lima_oscuro">#FF34460A</color>
+    <color name="lima_claro">#FFDDFF9E</color>
+    <color name="cian">#FF7FD8FF</color>
+
+    <color name="fondo">#FF071012</color>
+    <color name="superficie_baja">#FF0C1719</color>
+    <color name="superficie">#FF101D20</color>
+    <color name="superficie_alta">#FF142427</color>
+    <color name="superficie_mas_alta">#FF182C30</color>
+    <color name="superficie_variante">#FF1A2B2E</color>
+    <color name="texto">#FFE2F1EE</color>
+    <color name="texto_suave">#FF9FB8B3</color>
+    <color name="contorno">#FF3C5559</color>
+    <color name="contorno_suave">#FF22363A</color>
+
+    <color name="sobre_aguamarina">#FF00201A</color>
+    <color name="sobre_lima">#FF1B2A00</color>
+    <color name="brillo_aguamarina">#B32EE6C5</color>
+</resources>

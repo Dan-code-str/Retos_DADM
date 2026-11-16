@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">Internet en Colombia</string>
+
+    <!-- Consulta -->
+    <string name="consulta_titulo">Internet en tu municipio</string>
+    <string name="consulta_subtitulo">Accesos fijos a internet según MinTIC, por municipio y trimestre.</string>
+    <string name="etiqueta_departamento">Departamento</string>
+    <string name="etiqueta_municipio">Municipio</string>
+    <string name="etiqueta_periodo">Periodo</string>
+    <string name="boton_consultar">Consultar</string>
+    <string name="boton_reintentar">Reintentar</string>
+    <string name="cargando_inicial">Cargando departamentos y periodos…</string>
+    <string name="cargando_municipios">Cargando municipios…</string>
+    <string name="espera_municipios">Espera a que carguen los municipios.</string>
+    <string name="fuente_datos">Fuente: datos.gov.co · conjuntos tvzi-ba2g y hwrp-3su3 (MinTIC)</string>
+
+    <!-- Resumen -->
+    <string name="subtitulo_municipio">%1$s · %2$s</string>
+    <string name="cargando_resumen">Consultando el servicio…</string>
+    <string name="tarjeta_accesos">Accesos fijos</string>
+    <string name="tarjeta_poblacion">Población</string>
+    <string name="tarjeta_penetracion">Penetración</string>
+    <string name="nota_penetracion">accesos por cada 100 habitantes</string>
+    <string name="posicion_departamento">Puesto %1$d de %2$d municipios de %3$s</string>
+    <string name="titulo_evolucion">Evolución de la penetración</string>
+    <string name="ayuda_evolucion">Toca una barra para ver ese trimestre.</string>
+    <string name="evolucion_seleccion">%1$s · %2$s por cada 100 hab. · %3$s accesos</string>
+    <string name="sin_datos_periodo">No hay datos de este municipio para %1$s.</string>
+    <string name="boton_ver_detalle">Ver detalle</string>
+    <string name="boton_ver_mapa_google">Ver en Google Maps</string>
+    <string name="sin_app_mapas">No hay una app de mapas instalada.</string>
+
+    <!-- Detalle -->
+    <string name="titulo_detalle">Detalle de accesos</string>
+    <string name="tarjeta_velocidad">Velocidad de bajada promedio</string>
+    <string name="valor_mbps">%1$s Mbps</string>
+    <string name="tarjeta_total">Total de accesos</string>
+    <string name="titulo_estratos">Por estrato</string>
+    <string name="titulo_tecnologias">Por tecnología</string>
+    <string name="titulo_operadores">Principales operadores</string>
+    <string name="sin_datos">Sin datos</string>
+    <string name="nota_porcentaje">%1$s (%2$s %%)</string>
+
+    <!-- Mapa -->
+    <string name="boton_ver_mapa">Ver mapa de Colombia</string>
+    <string name="mapa_titulo">Mapa de Colombia</string>
+    <string name="mapa_descripcion">Mapa de Colombia coloreado por departamento</string>
+    <string name="modo_penetracion">Penetración</string>
+    <string name="modo_fibra">Fibra</string>
+    <string name="modo_operador">Operador</string>
+    <string name="descripcion_penetracion">Accesos fijos por cada 100 habitantes, por %1$s</string>
+    <string name="descripcion_fibra">Porcentaje de accesos que son de fibra óptica, por %1$s</string>
+    <string name="descripcion_operador">Operador con más accesos en cada %1$s</string>
+    <string name="zona_departamento">departamento</string>
+    <string name="zona_municipio">municipio</string>
+    <string name="boton_ver_municipios">Ver mapa por municipios</string>
+    <string name="boton_ver_resumen_municipio">Ver resumen del municipio</string>
+    <string name="reproducir">Reproducir la evolución</string>
+    <string name="pausar">Pausar</string>
+    <string name="colombia">Colombia</string>
+    <string name="total_penetracion">%1$s · %2$s por cada 100 hab. · %3$s accesos</string>
+    <string name="total_fibra">%1$s · %2$s %% de los accesos son fibra</string>
+    <string name="total_operador">%1$s · principal: %2$s con %3$s %%</string>
+    <string name="extremos_altos">Más altos: %1$s</string>
+    <string name="extremos_bajos">Más bajos: %1$s</string>
+    <string name="extremos_operador">Mayor concentración: %1$s</string>
+    <string name="posicion_zona">Puesto %1$d de %2$d %3$s</string>
+    <string name="zonas_departamentos">departamentos</string>
+    <string name="zonas_municipios">municipios</string>
+    <string name="variacion_penetracion">%1$s por cada 100 hab. desde %2$s</string>
+    <string name="variacion_fibra">%1$s puntos de fibra desde %2$s</string>
+    <string name="operador_igual">El mismo operador lidera desde %1$s</string>
+    <string name="operador_cambio">En %1$s lideraba %2$s</string>
+    <string name="cargando_serie">Trayendo todos los trimestres…</string>
+    <string name="cargando_mapa">Cargando mapa y datos…</string>
+    <string name="valor_penetracion">%1$s accesos por cada 100 habitantes</string>
+    <string name="valor_fibra">%1$s %% de los accesos son de fibra óptica</string>
+    <string name="valor_operador">%1$s · %2$s %% de los accesos</string>
+    <string name="valor_accesos">%1$s accesos fijos</string>
+    <string name="sin_datos_departamento">Sin datos para este periodo</string>
+    <string name="leyenda_sin_datos">Sin datos</string>
+    <string name="boton_consultar_departamento">Consultar este departamento</string>
+    <string name="credito_mapa">Contornos: @john-guerra/geo-colombia (MIT), a partir del Marco Geoestadístico Nacional del DANE. Datos: MinTIC, datos.gov.co.</string>
+
+    <!-- Errores -->
+    <string name="error_sin_conexion">Sin conexión a internet. Revisa la red e inténtalo de nuevo.</string>
+    <string name="error_tiempo">El servicio tardó demasiado en responder. Inténtalo de nuevo.</string>
+    <string name="error_servicio">No se pudo consultar el servicio. %1$s</string>
+    <string name="error_respuesta">La respuesta del servicio no se pudo leer. %1$s</string>
+</resources>

@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">GPSLocator</string>
+
+    <!-- Menú -->
+    <string name="action_search">Buscar dirección</string>
+    <string name="search_hint">Dirección o lugar…</string>
+    <string name="action_refresh">Actualizar</string>
+    <string name="action_settings">Preferencias</string>
+    <string name="action_my_location">Ir a mi ubicación</string>
+
+    <!-- Mapa -->
+    <string name="my_location">Tú estás aquí</string>
+    <string name="selected_point">Punto seleccionado</string>
+    <string name="poi_snippet">%1$s · a %2$s</string>
+
+    <!-- Estado -->
+    <string name="status_locating">Obteniendo tu ubicación…</string>
+    <string name="status_searching">Buscando puntos de interés en %1$s…</string>
+    <string name="status_geocoding">Buscando «%1$s»…</string>
+    <string name="status_none">No hay puntos de interés en %1$s. Prueba un radio mayor en Preferencias.</string>
+    <plurals name="status_found">
+        <item quantity="one">%1$d lugar en %2$s · toca un marcador para ver detalles</item>
+        <item quantity="many">%1$d lugares en %2$s · toca un marcador para ver detalles</item>
+        <item quantity="other">%1$d lugares en %2$s · toca un marcador para ver detalles</item>
+    </plurals>
+    <plurals name="status_partial">
+        <item quantity="one">%1$d lugar encontrado, sigue buscando…</item>
+        <item quantity="many">%1$d lugares encontrados, sigue buscando…</item>
+        <item quantity="other">%1$d lugares encontrados, sigue buscando…</item>
+    </plurals>
+    <string name="status_error">No se pudieron cargar los puntos de interés. Revisa tu conexión y toca Actualizar.</string>
+    <string name="status_permission_denied">Sin permiso de ubicación. Busca una dirección o mantén presionado el mapa para elegir un punto.</string>
+    <string name="status_no_location">No se pudo obtener tu ubicación. Activa el GPS, busca una dirección o mantén presionado el mapa.</string>
+    <string name="status_no_categories">No hay categorías seleccionadas. Elige al menos una en Preferencias.</string>
+    <string name="status_address_not_found">No se encontró «%1$s».</string>
+    <string name="status_geocoder_unavailable">La búsqueda de direcciones no está disponible en este dispositivo.</string>
+
+    <!-- Preferencias -->
+    <string name="settings_title">Preferencias</string>
+    <string name="pref_cat_search">Búsqueda</string>
+    <string name="pref_radius_title">Radio de búsqueda (km)</string>
+    <string name="pref_radius_summary">%1$s km alrededor de la ubicación</string>
+    <string name="pref_radius_invalid">El radio debe estar entre %1$s y %2$s km</string>
+    <string name="pref_categories_title">Tipos de puntos de interés</string>
+    <string name="pref_categories_none">Ninguno seleccionado</string>
+
+    <!-- Categorías -->
+    <string name="cat_hospital">Hospital o clínica</string>
+    <string name="cat_pharmacy">Farmacia</string>
+    <string name="cat_tourism">Lugar turístico</string>
+    <string name="cat_park">Parque</string>
+    <string name="cat_restaurant">Restaurante o café</string>
+    <string name="cat_education">Colegio o universidad</string>
+    <string name="cat_police">Policía</string>
+    <string name="cat_hotel">Hotel</string>
+    <string name="cat_bank">Banco</string>
+</resources>
