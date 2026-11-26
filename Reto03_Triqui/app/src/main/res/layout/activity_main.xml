@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center" >
+
+    <TableLayout
+        android:id="@+id/play_grid"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_marginTop="5dp" >
+
+        <!-- Fila 1 -->
+        <TableRow android:gravity="center_horizontal">
+            <Button android:id="@+id/one"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/two"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/three"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+        </TableRow>
+
+        <!-- Fila 2 -->
+        <TableRow android:gravity="center_horizontal">
+            <Button android:id="@+id/four"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/five"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/six"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+        </TableRow>
+
+        <!-- Fila 3 -->
+        <TableRow android:gravity="center_horizontal">
+            <Button android:id="@+id/seven"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/eight"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+            <Button android:id="@+id/nine"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="70dp" />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView android:id="@+id/information"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="info"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp" />
+
+    <!-- Este es el nuevo RelativeLayout para los puntajes -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/human_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Human: 0"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tie_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Ties: 0"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/android_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Android: 0"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

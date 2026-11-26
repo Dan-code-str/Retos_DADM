@@ -1,0 +1,11 @@
+# Archivos de Android Studio / Gradle que no van al repositorio
+.gradle/
+.kotlin/
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.iml
+local.properties
+.DS_Store
