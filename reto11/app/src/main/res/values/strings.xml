@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Lienzo IA</string>
+
+    <!-- Encabezado -->
+    <string name="titulo">Lienzo IA</string>
+    <string name="subtitulo">Describe una idea, elige un estilo y la IA la convierte en imagen.</string>
+    <string name="desc_boton_clave">Configurar la API key de Gemini</string>
+
+    <!-- Idea -->
+    <string name="seccion_idea">Tu idea</string>
+    <string name="pista_idea">Ej.: un colibrí hecho de vidrio volando sobre Monserrate al atardecer</string>
+    <string name="boton_mejorar">Mejorar con IA</string>
+    <string name="mejorando">Gemini está enriqueciendo tu idea…</string>
+    <string name="idea_mejorada">Idea mejorada. Puedes editarla antes de generar.</string>
+
+    <!-- Opciones -->
+    <string name="seccion_estilo">Estilo</string>
+    <string name="seccion_ambiente">Ambiente (opcional)</string>
+    <string name="seccion_formato">Formato</string>
+
+    <!-- Generación -->
+    <string name="boton_generar">Generar imagen</string>
+    <string name="boton_reintentar">Reintentar</string>
+    <string name="generando">Generando tu imagen… puede tardar unos segundos</string>
+    <string name="refinando">Aplicando tu cambio a la imagen…</string>
+    <string name="falta_idea">Escribe primero qué quieres ver.</string>
+
+    <!-- Resultado -->
+    <string name="seccion_resultado">Resultado</string>
+    <string name="desc_imagen_resultado">Imagen generada por la IA</string>
+    <string name="etiqueta_prompt">Prompt enviado</string>
+    <string name="comentario_modelo">Gemini: %1$s</string>
+    <string name="comentario_traduccion">Prompt en inglés para FLUX (traducido por Gemini): %1$s</string>
+    <string name="boton_guardar">Guardar</string>
+    <string name="boton_compartir">Compartir</string>
+    <string name="pista_cambio">¿Qué quieres cambiar? Ej.: que sea de noche</string>
+    <string name="boton_refinar">Aplicar cambio</string>
+    <string name="falta_cambio">Escribe qué quieres cambiar de la imagen.</string>
+    <string name="guardada_galeria">Imagen guardada en Galería › Pictures/LienzoIA</string>
+    <string name="error_guardar">No se pudo guardar la imagen.</string>
+    <string name="guardar_no_disponible">En esta versión de Android usa Compartir para guardarla.</string>
+    <string name="compartir_titulo">Compartir imagen</string>
+
+    <!-- Historial -->
+    <string name="seccion_historial">Creaciones recientes</string>
+    <string name="historial_vacio">Aquí aparecerán las imágenes que generes.</string>
+    <string name="desc_miniatura">Creación anterior: %1$s</string>
+
+    <!-- API key -->
+    <string name="dialogo_clave_titulo">API key de Gemini</string>
+    <string name="dialogo_clave_mensaje">Crea una clave gratis en aistudio.google.com y pégala aquí. Se guarda solo en este teléfono.</string>
+    <string name="pista_clave">AIza…</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="clave_guardada">API key guardada.</string>
+    <string name="clave_desde_build">Se está usando la API key de local.properties. Si escribes otra aquí, tendrá prioridad.</string>
+
+    <!-- Errores -->
+    <string name="error_sin_clave">Falta la API key de Gemini. Tócala en el ícono de la llave para configurarla.</string>
+    <string name="error_credencial_cloudflare">El Account ID o el API Token de Cloudflare no son válidos. Revísalos en local.properties (el token necesita permiso Workers AI).</string>
+    <string name="error_clave_invalida">La API key no es válida. Revísala en aistudio.google.com.</string>
+    <string name="error_cuota">Se agotó la cuota de %1$s. Intenta más tarde (en Cloudflare la cuota gratuita se renueva cada día a las 7 p. m., hora de Colombia).</string>
+    <string name="error_permiso">Tu clave no tiene acceso al modelo %1$s (o no está disponible en tu región).</string>
+    <string name="error_modelo">El modelo %1$s no existe o no admite esta operación. Cámbialo en local.properties.</string>
+    <string name="error_servidor">El servicio de Gemini está ocupado (código %1$d). Intenta de nuevo en un momento.</string>
+    <string name="error_bloqueado">Gemini no generó la imagen porque el contenido fue bloqueado por sus filtros de seguridad. Prueba reformulando la idea.</string>
+    <string name="error_sin_imagen">Gemini respondió sin imagen. Prueba con una descripción más concreta.</string>
+    <string name="error_red">No hay conexión con el servicio. Revisa tu internet.</string>
+    <string name="error_tiempo">El servicio tardó demasiado en responder. Intenta de nuevo.</string>
+    <string name="error_generico">Ocurrió un error: %1$s</string>
+
+    <string name="pie">Imágenes: %1$s · Prompts: Google Gemini</string>
+</resources>

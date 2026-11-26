@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta: violeta (primario) y rosa (acento) sobre fondo casi negro violáceo -->
+    <color name="violeta">#FFB79CFF</color>
+    <color name="violeta_oscuro">#FF3D2A7A</color>
+    <color name="violeta_claro">#FFE6DCFF</color>
+    <color name="rosa">#FFFF7AC6</color>
+    <color name="rosa_oscuro">#FF6B1F4D</color>
+    <color name="rosa_claro">#FFFFD3EC</color>
+    <color name="ambar">#FFFFC56E</color>
+
+    <color name="fondo">#FF0D0A14</color>
+    <color name="superficie_baja">#FF13101C</color>
+    <color name="superficie">#FF181424</color>
+    <color name="superficie_alta">#FF1E192C</color>
+    <color name="superficie_mas_alta">#FF251F35</color>
+    <color name="superficie_variante">#FF2A2338</color>
+    <color name="texto">#FFEDE7F6</color>
+    <color name="texto_suave">#FFB3A9C6</color>
+    <color name="contorno">#FF54496A</color>
+    <color name="contorno_suave">#FF2E2640</color>
+    <color name="error">#FFFF8A80</color>
+
+    <color name="sobre_violeta">#FF1E0F4D</color>
+    <color name="sobre_rosa">#FF3D0026</color>
+</resources>
