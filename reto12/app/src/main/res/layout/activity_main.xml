@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una sola pantalla con tres vistas: inicio (redirige a GitHub), éxito y fallo. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:fillViewport="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="32dp">
+
+        <!-- ============ INICIO ============ -->
+        <LinearLayout
+            android:id="@+id/vistaInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/circulo"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_launcher_foreground" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/reto"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge"
+                android:textColor="@color/texto_secundario" />
+
+            <TextView
+                style="@style/Texto.Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/titulo" />
+
+            <TextView
+                style="@style/Texto.Subtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/subtitulo" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/como_funciona"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                        android:textColor="@color/github_negro" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/circulo_paso"
+                            android:gravity="center"
+                            android:text="1"
+                            android:textColor="@color/github_negro"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Texto.Paso"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:paddingTop="2dp"
+                            android:text="@string/paso_1" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/circulo_paso"
+                            android:gravity="center"
+                            android:text="2"
+                            android:textColor="@color/github_negro"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Texto.Paso"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:paddingTop="2dp"
+                            android:text="@string/paso_2" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/circulo_paso"
+                            android:gravity="center"
+                            android:text="3"
+                            android:textColor="@color/github_negro"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Texto.Paso"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:paddingTop="2dp"
+                            android:text="@string/paso_3" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/circulo_paso"
+                            android:gravity="center"
+                            android:text="4"
+                            android:textColor="@color/github_negro"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            style="@style/Texto.Paso"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:paddingTop="2dp"
+                            android:text="@string/paso_4" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/txtSinConfigurar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/fondo_aviso"
+                android:backgroundTint="@color/ambar_suave"
+                android:padding="14dp"
+                android:text="@string/sin_configurar"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/ambar"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGithub"
+                    style="@style/Boton.Principal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/continuar_github" />
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progresoGithub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|start"
+                    android:layout_marginStart="20dp"
+                    android:elevation="8dp"
+                    android:indeterminate="true"
+                    android:visibility="gone"
+                    app:indicatorColor="@color/blanco"
+                    app:indicatorSize="20dp"
+                    app:trackThickness="2dp" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/pie"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/texto_secundario" />
+        </LinearLayout>
+
+        <!-- ============ ÉXITO ============ -->
+        <LinearLayout
+            android:id="@+id/vistaExito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/circulo"
+                android:backgroundTint="@color/verde"
+                android:gravity="center"
+                android:text="✓"
+                android:textColor="@color/blanco"
+                android:textSize="44sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTituloExito"
+                style="@style/Texto.Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/exito_titulo"
+                android:textColor="@color/verde" />
+
+            <TextView
+                android:id="@+id/txtSubtituloExito"
+                style="@style/Texto.Subtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/exito_subtitulo" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Tarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txtAvatar"
+                            android:layout_width="52dp"
+                            android:layout_height="52dp"
+                            android:background="@drawable/circulo"
+                            android:gravity="center"
+                            android:textColor="@color/blanco"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="14dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtNombre"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                                android:textColor="@color/github_negro"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtUsuario"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/texto_secundario" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/borde" />
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/etiqueta_proveedor" />
+
+                    <TextView
+                        android:id="@+id/txtProveedor"
+                        style="@style/Texto.Valor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textIsSelectable="true" />
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/etiqueta_correo" />
+
+                    <TextView
+                        android:id="@+id/txtCorreo"
+                        style="@style/Texto.Valor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textIsSelectable="true" />
+                    <TextView
+                        style="@style/Texto.Etiqueta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/etiqueta_uid" />
+
+                    <TextView
+                        android:id="@+id/txtUid"
+                        style="@style/Texto.Valor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textIsSelectable="true"
+                        android:fontFamily="monospace" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/fondo_aviso"
+                android:padding="14dp"
+                android:text="@string/sin_contrasenas"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textColor="@color/verde" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCerrarSesion"
+                style="@style/Boton.Secundario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/cerrar_sesion" />
+        </LinearLayout>
+
+        <!-- ============ FALLO ============ -->
+        <LinearLayout
+            android:id="@+id/vistaFallo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtIconoFallo"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/circulo"
+                android:backgroundTint="@color/rojo"
+                android:gravity="center"
+                android:text="✕"
+                android:textColor="@color/blanco"
+                android:textSize="44sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtTituloFallo"
+                style="@style/Texto.Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/fallo_titulo"
+                android:textColor="@color/rojo" />
+
+            <TextView
+                android:id="@+id/txtMotivoFallo"
+                style="@style/Texto.Subtitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/txtDetalleFallo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/fondo_aviso"
+                android:fontFamily="monospace"
+                android:padding="14dp"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+                android:textIsSelectable="true" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReintentar"
+                style="@style/Boton.Principal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="@string/reintentar" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVolver"
+                style="@style/Boton.Secundario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/volver" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

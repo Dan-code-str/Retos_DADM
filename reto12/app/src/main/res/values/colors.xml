@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="github_negro">#FF24292F</color>
+    <color name="fondo">#FFF6F8FA</color>
+    <color name="blanco">#FFFFFFFF</color>
+    <color name="borde">#FFD0D7DE</color>
+    <color name="texto_secundario">#FF59636E</color>
+    <color name="verde">#FF1F883D</color>
+    <color name="verde_suave">#FFDAFBE1</color>
+    <color name="rojo">#FFCF222E</color>
+    <color name="rojo_suave">#FFFFEBE9</color>
+    <color name="ambar">#FF9A6700</color>
+    <color name="ambar_suave">#FFFFF8C5</color>
+</resources>

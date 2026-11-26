@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Reto 12 Auth</string>
+
+    <!-- Inicio -->
+    <string name="reto">Reto 12</string>
+    <string name="titulo">Autenticación delegada</string>
+    <string name="subtitulo">Inicia sesión con tu cuenta de GitHub. Esta app nunca ve ni guarda tu contraseña.</string>
+    <string name="como_funciona">¿Cómo funciona?</string>
+    <string name="paso_1">Tocas «Continuar con GitHub».</string>
+    <string name="paso_2">Se abre la página oficial de GitHub en el navegador.</string>
+    <string name="paso_3">GitHub te pide usuario, contraseña y 2FA, si la tienes.</string>
+    <string name="paso_4">GitHub confirma tu identidad y vuelves a la app con el resultado.</string>
+    <string name="continuar_github">Continuar con GitHub</string>
+    <string name="esperando_github">Esperando a GitHub…</string>
+    <string name="sin_configurar">Firebase aún no está configurado: falta el archivo app/google-services.json. Revisa el README del proyecto.</string>
+    <string name="pie">Desarrollo de Aplicaciones para Dispositivos Móviles · UNAL</string>
+
+    <!-- Éxito -->
+    <string name="exito_titulo">¡Autenticación exitosa!</string>
+    <string name="exito_subtitulo">GitHub confirmó tu identidad. Ya puedes usar la app.</string>
+    <string name="sesion_activa_titulo">Sesión activa</string>
+    <string name="sesion_activa_subtitulo">Ya te habías autenticado con GitHub en este dispositivo.</string>
+    <string name="usuario_github">Usuario de GitHub</string>
+    <string name="arroba_usuario">\@%1$s</string>
+    <string name="etiqueta_proveedor">Proveedor</string>
+    <string name="etiqueta_correo">Correo</string>
+    <string name="etiqueta_uid">UID (Firebase)</string>
+    <string name="correo_no_compartido">No compartido por GitHub</string>
+    <string name="sin_contrasenas">Contraseñas almacenadas en la app: ninguna. Solo se conserva la sesión emitida por Firebase.</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Fallo -->
+    <string name="fallo_titulo">Autenticación fallida</string>
+    <string name="reintentar">Reintentar con GitHub</string>
+    <string name="volver">Volver al inicio</string>
+</resources>
